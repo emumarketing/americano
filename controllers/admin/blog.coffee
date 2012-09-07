@@ -23,7 +23,7 @@ module.exports = BlogMixin =
       excerpt: params.excerpt
     blog.save (err) ->
       if (err)
-        res.render "admin/blog/create", {post: post, errors: err, action: "/admin/blog/new"}
+        res.render "admin/blog/create", {post: params, errors: err, action: "/admin/blog/new"}
       else
         res.redirect "/admin/blog"
     return

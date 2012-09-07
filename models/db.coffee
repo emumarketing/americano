@@ -1,6 +1,6 @@
 mongoose = require('mongoose')
 Schema = mongoose.Schema
-#mongoose.connect('mongodb://localhost/db')
+mongoose.connect('mongodb://localhost/kwva')
 
 Validator = require('validator').Validator
 validator = new Validator

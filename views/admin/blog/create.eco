@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="span12"><br><br><br>
+    <% if @errors: %>    
+      <div class="alert alert-error"><b>Uh Oh!</b>
+        <ul>
+        <% for e in @errors: %>
+          <li><%= e %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h1>New Post</h1><br>
+  </div>
+</div>
+<div class="row">
+  <%- @partial('_form', {post: @post, action: @action, errors: @errors}) %>
+</div>

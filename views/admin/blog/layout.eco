@@ -1,0 +1,22 @@
+
+<!DOCTYPE html><!--[if lt IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"></html><![endif]--><!--[if IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8"></html><![endif]--><!--[if IE 8]>
+<html lang="en" class="no-js lt-ie9"></html><![endif]--><!--[if gt IE 8]><!
+<html lang="en" class="no-js"></html>-->
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ADMIN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <div class="container">
+    <%- @partial('../_nav') %>
+    <%- @body %>
+  </div>
+</body>
+</html>

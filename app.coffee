@@ -2,11 +2,12 @@ require("coffee-script")
 express = require("express")
 app = express.createServer()
 less = require("less-middleware")
+eco = require "eco"
 
 app.set "views", __dirname + "/views"
-app.set "view engine", "jade"
+app.set 'view engine', 'eco'
 app.set "view options",
-  layout: false
+  layout: true
   pretty: true
 
 

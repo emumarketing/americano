@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="span12"><br><br><br></div>
+</div>
+<div class="row">
+  <div class="span12">
+    <p><%= @errors %></p>
+    <h1>Blog Posts</h1><a href="/admin/blog/create" class="btn btn-primary">New Post</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>DJ</th>
+          <th>Date</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <% for post in @data: %>  
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.dj %></td>
+          <td><%= post.date %></td>
+          <td><a href="/admin/blog/edit/<%= post.slug %>">Edit </a><a href="#">Delete</a></td>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+</div>
