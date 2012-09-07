@@ -1,0 +1,14 @@
+{
+  "name": "Americano",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "2.x",
+    "less-middleware": "latest",
+    "ejs", "latest",
+    "jade": "latest",
+  },
+  "main": "app",
+  "engines": {
+    "node": ">=0.6.0"
+  }
+}

@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  .row
+    .span12
+      br
+      br
+      br
+  .row
+    .span12
+      if errors
+        .alert.alert-error
+          b Uh Oh!
+          ul
+          for e in errors.errors
+            li= e.type
+      h1 Editing #{post.title}
+      br
+  .row
+    include _form
