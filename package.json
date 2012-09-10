@@ -4,8 +4,9 @@
   "dependencies": {
     "express": "2.x",
     "less-middleware": "latest",
-    "ejs", "latest",
-    "jade": "latest",
+    "eco": "latest",
+    "mongoose": "2.x",
+    "validator": "latest"
   },
   "main": "app",
   "engines": {
