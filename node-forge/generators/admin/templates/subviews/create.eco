@@ -9,7 +9,7 @@
         </ul>
       </div>
     <% end %>
-    <h1>New Post</h1><br>
+    <h1>New {{dataname}}</h1><br>
   </div>
 </div>
 <div class="row">

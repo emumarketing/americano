@@ -1,6 +1,9 @@
 Db = require('./db')
 {{name}} = new Db.Schema{{#key_value data}}
   {{key}}: {{value}},{{/key_value}}
+  slug:
+    type: String,
+    unique: true,
 
 {{#key_value data}}
 {{../name}}.path('{{key}}').validate (v) ->
@@ -9,4 +12,3 @@ Db = require('./db')
 {{/key_value}}
 
 module.exports = Db.Model.register '{{ name }}', {{ name }}
-

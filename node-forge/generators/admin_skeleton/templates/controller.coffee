@@ -1,14 +1,12 @@
 BaseController = require('./base')
-BlogMixin = require('./admin/blog')
 
-module.exports = class AdminController extends BaseController
+module.exports = class {{name}}Controller extends BaseController
 
   constructor: (@app) ->
     super(@app)
-    @mixin BlogMixin
 
   home: (req, res) =>
-    res.render "admin/home"
+    res.render "{{name}}/home"
     return
 
     

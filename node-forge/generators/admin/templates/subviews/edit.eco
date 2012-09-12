@@ -12,7 +12,7 @@
         </ul>
       </div>
     <% end %>
-    <h1>Editing <%= @post.title %></h1><br>
+    <h1>Editing <%= @post.{{dataname}} %></h1><br>
   </div>
 </div>
 <div class="row">
