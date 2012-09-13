@@ -12,9 +12,9 @@
         </ul>
       </div>
     <% end %>
-    <h1>Editing <%= @post.{{dataname}} %></h1><br>
+    <h1>Editing <%= @item.{{dataname}} %></h1><br>
   </div>
 </div>
 <div class="row">
-  <%- @partial('_form', {post: @post, action: @action}) %>
+  <%- @partial('_form', {item: @item, action: @action}) %>
 </div>

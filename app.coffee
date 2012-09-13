@@ -22,26 +22,26 @@ app.configure ->
   app.use express.static(__dirname + "/public")
   app.use app.router
 
-AdminController = require('./controllers/admin')
-adminController = new AdminController app
+AdminPanelController = require('./controllers/AdminPanel')
+adminController = new AdminPanelController app
 
 app.get "/", (req, res) ->
   res.render "home"
 
-app.get "/admin/home", adminController.home
+app.get "/adminpanel/home", adminController.action_home
 
-app.get "/admin/blog", adminController.blogIndex
+app.get "/adminpanel/blog", adminController.action_index
 
-app.get "/admin/blog/create", adminController.blogCreate
+app.get "/adminpanel/blog/create", adminController.action_create
 
-app.post "/admin/blog/new", adminController.blogNew
+app.post "/adminpanel/blog/new", adminController.action_new
 
-app.get "/admin/blog/edit/:slug", adminController.blogEdit
+app.get "/adminpanel/blog/edit/:slug", adminController.action_edit
 
-app.post "/admin/blog/update/:slug", adminController.blogUpdate
+app.post "/adminpanel/blog/update/:slug", adminController.action_update
 
-app.get "/admin", (req, res) ->
-  res.redirect '/admin/home'
+app.get "/adminpanel", (req, res) ->
+  res.redirect '/adminpanel/home'
 
 app.listen 8004
 

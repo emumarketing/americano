@@ -16,14 +16,14 @@ module.exports = Generator.extend({
    *	@param	{Object}	options	a list of options being passed to the generator
    */
   create: function (name, options) {
-    this.mkdir(this.project_dir + '/controllers/' + name);
-    this.template('controller.coffee', this.project_dir + '/controllers/' + name + '.coffee', { name: name });  
-    this.mkdir(this.project_dir + '/views/' + name);
+    this.mkdir(this.project_dir + '/controllers/' + name.toLowerCase());
+    this.template('controller.coffee.hbs', this.project_dir + '/controllers/' + name + '.coffee', { name: name });  
+    this.mkdir(this.project_dir + '/views/' + name.toLowerCase());
     this.template('./public/stylesheets/style.css', this.project_dir + '/public/stylesheets/style.css', {});  
     this.template('./public/stylesheets/bootstrap.css', this.project_dir + '/public/stylesheets/bootstrap.css', {});  
-    this.template('./views/_nav.eco', this.project_dir + '/views/' + name + '/_nav.eco', { name: name });  
-    this.template('./views/home.eco', this.project_dir + '/views/' + name + '/home.eco', { name: name });  
-    this.template('./views/layout.eco', this.project_dir + '/views/' + name + '/layout.eco', { name: name });  
+    this.template('./views/_nav.eco.hbs', this.project_dir + '/views/' + name + '/_nav.eco', { name: name });  
+    this.template('./views/home.eco.hbs', this.project_dir + '/views/' + name + '/home.eco', { name: name });  
+    this.template('./views/layout.eco.hbs', this.project_dir + '/views/' + name + '/layout.eco', { name: name });  
 
   }
 });

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="span12"><br><br><br></div>
+</div>
+<div class="row">
+  <div class="span12">
+    <p><%= @errors %></p>
+    <h1>{{dataname}}</h1><a href="/{{lowercase resource}}/{{lowercase dataname}}/create" class="btn btn-primary">New {{dataname}}</a>
+    <table class="table">
+      <thead>
+        <tr>{{#eachProp data}}
+          <th>{{capitalizeFirst key}}</th>{{/eachProp}}
+          <th>Slug</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <% for item in @item: %>  
+        <tr>{{#eachProp data}}
+          <td><%= item.{{key}} %></td>{{/eachProp}}
+          <td><%= item.slug %></td>
+          <td><a href="/{{lowercase resource}}/{{lowercase dataname}}/edit/<%= item.slug %>">Edit</a> | <a href="#">Delete</a></td>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+</div>

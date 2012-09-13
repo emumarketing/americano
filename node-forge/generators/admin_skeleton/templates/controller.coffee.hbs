@@ -1,12 +1,19 @@
 BaseController = require('./base')
 
+# Require any mixins here
+
+#BigMixin = require('./{{lowercase name}}/BigMixin')
+
 module.exports = class {{name}}Controller extends BaseController
 
   constructor: (@app) ->
     super(@app)
 
-  home: (req, res) =>
-    res.render "{{name}}/home"
+    # Call the mixin helpers here
+    #@mixin(BigMixin)
+
+  action_home: (req, res) =>
+    res.render "{{lowercase name}}/home"
     return
 
     

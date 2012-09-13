@@ -28,14 +28,14 @@ module.exports = Generator.extend({
 
     var params = {name: dataname, data: datatypes, dataname: dataname, resource: resource};
 
-    this.template('model.coffee',  this.project_dir + '/models/' + dataname + 'Model.coffee', { name: dataname + "Model", data: datatypes, dataname: dataname, resource: resource});
-    this.template('./mixins/mixin.coffee',  this.project_dir + '/controllers/' + resource + '/' + dataname + '.coffee', params);
-    this.mkdir(this.project_dir + '/views/' + resource + '/' + dataname);
-    this.template('./subviews/_form.eco',  this.project_dir + '/views/' + resource + '/' + dataname + '/_form.eco', params);
-    this.template('./subviews/index.eco',  this.project_dir + '/views/' + resource + '/' + dataname + '/index.eco', params);
-    this.template('./subviews/create.eco',  this.project_dir + '/views/' + resource + '/' + dataname + '/create.eco', params);
-    this.template('./subviews/edit.eco',  this.project_dir + '/views/' + resource + '/' + dataname + '/edit.eco', params);
-    this.template('./subviews/layout.eco',  this.project_dir + '/views/' + resource + '/' + dataname + '/layout.eco', params);
+    this.template('model.coffee.hbs',  this.project_dir + '/models/' + dataname + 'Model.coffee', { name: dataname + "Model", data: datatypes, dataname: dataname, resource: resource});
+    this.template('./mixins/mixin.coffee.hbs',  this.project_dir + '/controllers/' + resource + '/' + dataname + 'Mixin.coffee', params);
+    this.mkdir(this.project_dir + '/views/' + resource + '/' + dataname.toLowerCase());
+    this.template('./subviews/_form.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_form.eco', params);
+    this.template('./subviews/index.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/index.eco', params);
+    this.template('./subviews/create.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/create.eco', params);
+    this.template('./subviews/edit.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/edit.eco', params);
+    this.template('./subviews/layout.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/layout.eco', params);
 
   },
 
