@@ -22,26 +22,30 @@ app.configure ->
   app.use express.static(__dirname + "/public")
   app.use app.router
 
-AdminPanelController = require('./controllers/AdminPanel')
-adminController = new AdminPanelController app
+
+# Controller Bootstrapper
+
+controllers = {}
+
+require("fs").readdirSync(__dirname + "/controllers").forEach (file) ->
+  if fileName = file.match(/(\w+)\.coffee/)
+
+    className = fileName[1].toLowerCase()
+
+    klass = require(__dirname + "/controllers/" + file)
+
+    controllers[className] = new klass(app)
+
+# Routes Bootstrapper
+
+require("fs").readdirSync(__dirname + "/routes").forEach (file) ->
+  if fileName = file.match(/[\w|\_]+\.coffee/)
+    require(__dirname + '/routes/' + fileName[0])(app, controllers)
+
+# Custom Routes
 
 app.get "/", (req, res) ->
   res.render "home"
-
-app.get "/adminpanel/home", adminController.action_home
-
-app.get "/adminpanel/blog", adminController.action_index
-
-app.get "/adminpanel/blog/create", adminController.action_create
-
-app.post "/adminpanel/blog/new", adminController.action_new
-
-app.get "/adminpanel/blog/edit/:slug", adminController.action_edit
-
-app.post "/adminpanel/blog/update/:slug", adminController.action_update
-
-app.get "/adminpanel", (req, res) ->
-  res.redirect '/adminpanel/home'
 
 app.listen 8004
 

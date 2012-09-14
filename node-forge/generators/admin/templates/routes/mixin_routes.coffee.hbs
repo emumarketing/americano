@@ -1,0 +1,12 @@
+module.exports = (app, controllers) ->
+
+  app.get "/{{lowercase resource}}/{{lowercase dataname}}", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_index
+  
+  app.get "/{{lowercase resource}}/{{lowercase dataname}}/create", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_create
+  
+  app.post "/{{lowercase resource}}/{{lowercase dataname}}/new", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_new
+  
+  app.get "/{{lowercase resource}}/{{lowercase dataname}}/edit/:slug", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_edit
+  
+  app.post "/{{lowercase resource}}/{{lowercase dataname}}/update/:slug", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_update
+  

@@ -1,0 +1,7 @@
+module.exports = (app, controllers) ->
+  app.get "/{{lowercase name}}/home", controllers.{{lowercase name}}.action_home
+  
+  app.get "/{{lowercase name}}", (req, res) ->
+    res.redirect '/{{lowercase name}}/home'
+
+  

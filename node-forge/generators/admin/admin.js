@@ -36,6 +36,8 @@ module.exports = Generator.extend({
     this.template('./subviews/create.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/create.eco', params);
     this.template('./subviews/edit.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/edit.eco', params);
     this.template('./subviews/layout.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/layout.eco', params);
+    this.template('./routes/mixin_routes.coffee.hbs',  this.project_dir + '/routes/' + resource.toLowerCase() + '_' + dataname.toLowerCase() + '.coffee', params);
+
 
   },
 

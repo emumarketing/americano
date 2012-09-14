@@ -24,6 +24,7 @@ module.exports = Generator.extend({
     this.template('./views/_nav.eco.hbs', this.project_dir + '/views/' + name + '/_nav.eco', { name: name });  
     this.template('./views/home.eco.hbs', this.project_dir + '/views/' + name + '/home.eco', { name: name });  
     this.template('./views/layout.eco.hbs', this.project_dir + '/views/' + name + '/layout.eco', { name: name });  
+    this.template('./routes/controller_routes.coffee.hbs',  this.project_dir + '/routes/' + name.toLowerCase() + '.coffee', {name: name});
 
   }
 });

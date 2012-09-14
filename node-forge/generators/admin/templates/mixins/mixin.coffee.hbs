@@ -2,16 +2,16 @@
 
 module.exports = {{dataname}}Mixin =
 
-  action_index: (req, res) =>
+  action_{{lowercase dataname}}_index: (req, res) =>
     {{dataname}}Model.find {}, (err, items) ->
       res.render "{{lowercase resource}}/{{lowercase dataname}}", {item: items, errors: err}
     return
 
-  action_create: (req, res) =>
+  action_{{lowercase dataname}}_create: (req, res) =>
     res.render "{{lowercase resource}}/{{lowercase dataname}}/create", {item: {}, action: "/{{lowercase resource}}/{{lowercase dataname}}/new"}
     return
 
-  action_new: (req, res) =>
+  action_{{lowercase dataname}}_new: (req, res) =>
     params = req.body
     {{dataname}} = new {{dataname}}Model{{#eachProp data}}
       {{key}}: params.{{key}},{{/eachProp}}
@@ -24,7 +24,7 @@ module.exports = {{dataname}}Mixin =
         res.redirect "/{{lowercase resource}}/{{lowercase dataname}}"
     return
 
-  action_edit: (req, res) =>
+  action_{{lowercase dataname}}_edit: (req, res) =>
     slug = req.params.slug
     {{dataname}}Model.findOne {"slug": slug}, (err, item) ->
       if !err and item?
@@ -33,7 +33,7 @@ module.exports = {{dataname}}Mixin =
         res.send "Not a Valid {{dataname}} To Edit"
     return
 
-  action_update: (req, res) =>
+  action_{{lowercase dataname}}_update: (req, res) =>
     slug = req.params.slug
     {{dataname}}Model.findOne {"slug", slug}, (err, item) ->{{#eachProp data}}
       item.{{key}} = req.body.{{key}}{{/eachProp}}
