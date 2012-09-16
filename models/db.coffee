@@ -1,6 +1,16 @@
 mongoose = require('mongoose')
 Schema = mongoose.Schema
-mongoose.connect('mongodb://localhost/test1')
+
+env = process.env.NODE_ENV
+
+connection =
+  'default':     'mongodb://localhost/test1',
+  'development': 'mongodb://localhost/test1',
+  'testing':     'mongodb://localhost/test1-testing',
+  'production':  'mongodb://localhost/test1',
+
+if !env then env = 'default'
+mongoose.connect(connection[env])
 
 Validator = require('validator').Validator
 validator = new Validator

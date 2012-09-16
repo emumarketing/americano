@@ -6,10 +6,19 @@
     "less-middleware": "latest",
     "eco": "latest",
     "mongoose": "2.x",
-    "validator": "latest"
+    "validator": "latest",
+    "chai": "~1.2.0",
+    "mocha": "~1.4.2",
+    "zombie": "~1.4.1",
+    "coffee-script": "~1.3.3",
+    "sinon": "~1.4.2",
+    "q": "~0.8.8"
   },
   "main": "app",
   "engines": {
     "node": ">=0.6.0"
+  },
+  "scripts": {
+    "test": "cake test"
   }
 }

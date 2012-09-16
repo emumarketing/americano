@@ -1,7 +1,7 @@
-require("coffee-script")
-express = require("express")
+require "coffee-script"
+express = require "express"
 app = express.createServer()
-less = require("less-middleware")
+less = require "less-middleware"
 eco = require "eco"
 
 app.set "views", __dirname + "/views"
@@ -47,7 +47,10 @@ require("fs").readdirSync(__dirname + "/routes").forEach (file) ->
 app.get "/", (req, res) ->
   res.render "home"
 
+
 app.listen 8004
+
+module.exports = app
 
 #Libraries
 
