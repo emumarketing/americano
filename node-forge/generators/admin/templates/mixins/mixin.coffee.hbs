@@ -2,16 +2,18 @@
 
 module.exports = {{dataname}}Mixin =
 
-  action_{{lowercase dataname}}_index: (req, res) =>
+  action_{{lowercase dataname}}_index: (req, res, cb) =>
     {{dataname}}Model.find {}, (err, items) ->
       res.render "{{lowercase resource}}/{{lowercase dataname}}", {item: items, errors: err}
+      if cb then cb()
     return
 
-  action_{{lowercase dataname}}_create: (req, res) =>
+  action_{{lowercase dataname}}_create: (req, res, cb) =>
     res.render "{{lowercase resource}}/{{lowercase dataname}}/create", {item: {}, action: "/{{lowercase resource}}/{{lowercase dataname}}/new"}
+    if cb then cb()
     return
 
-  action_{{lowercase dataname}}_new: (req, res) =>
+  action_{{lowercase dataname}}_new: (req, res, cb) =>
     params = req.body
     {{dataname}} = new {{dataname}}Model{{#eachProp data}}
       {{key}}: params.{{key}},{{/eachProp}}
@@ -22,18 +24,20 @@ module.exports = {{dataname}}Mixin =
         res.render "{{lowercase resource}}/{{lowercase dataname}}/create", {item: params, errors: err, action: "/{{lowercase resource}}/{{lowercase dataname}}/new"}
       else
         res.redirect "/{{lowercase resource}}/{{lowercase dataname}}"
+      if cb then cb()
     return
 
-  action_{{lowercase dataname}}_edit: (req, res) =>
+  action_{{lowercase dataname}}_edit: (req, res, cb) =>
     slug = req.params.slug
     {{dataname}}Model.findOne {"slug": slug}, (err, item) ->
       if !err and item?
         res.render "{{lowercase resource}}/{{lowercase dataname}}/edit", {item: item, errors: err, action: "/{{lowercase resource}}/{{lowercase dataname}}/update/#{item.slug}"}
       else
         res.send "Not a Valid {{dataname}} To Edit"
+      if cb then cb()
     return
 
-  action_{{lowercase dataname}}_update: (req, res) =>
+  action_{{lowercase dataname}}_update: (req, res, cb) =>
     slug = req.params.slug
     {{dataname}}Model.findOne {"slug", slug}, (err, item) ->{{#eachProp data}}
       item.{{key}} = req.body.{{key}}{{/eachProp}}
@@ -45,4 +49,5 @@ module.exports = {{dataname}}Mixin =
         else
           item.slug = old_slug
           res.render "{{lowercase resource}}/{{lowercase dataname}}/edit", {item: item, errors: err, action: "/{{lowercase resource}}/{{lowercase dataname}}/update/#{old_slug}"}
+        if cb then cb()
 

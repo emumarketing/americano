@@ -1,12 +1,17 @@
 module.exports = (app, controllers) ->
 
-  app.get "/{{lowercase resource}}/{{lowercase dataname}}", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_index
+  app.get "/{{lowercase resource}}/{{lowercase dataname}}", (req, res) ->
+    controllers.{{lowercase resource}}.action_{{lowercase dataname}}_index(req, res)
   
-  app.get "/{{lowercase resource}}/{{lowercase dataname}}/create", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_create
+  app.get "/{{lowercase resource}}/{{lowercase dataname}}/create", (req, res) ->
+    controllers.{{lowercase resource}}.action_{{lowercase dataname}}_create(req, res)
   
-  app.post "/{{lowercase resource}}/{{lowercase dataname}}/new", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_new
+  app.post "/{{lowercase resource}}/{{lowercase dataname}}/new", (req, res) ->
+    controllers.{{lowercase resource}}.action_{{lowercase dataname}}_new(req, res)
   
-  app.get "/{{lowercase resource}}/{{lowercase dataname}}/edit/:slug", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_edit
+  app.get "/{{lowercase resource}}/{{lowercase dataname}}/edit/:slug", (req, res) ->
+    controllers.{{lowercase resource}}.action_{{lowercase dataname}}_edit(req, res)
   
-  app.post "/{{lowercase resource}}/{{lowercase dataname}}/update/:slug", controllers.{{lowercase resource}}.action_{{lowercase dataname}}_update
+  app.post "/{{lowercase resource}}/{{lowercase dataname}}/update/:slug", (req, res) ->
+    controllers.{{lowercase resource}}.action_{{lowercase dataname}}_update(req, res)
   
