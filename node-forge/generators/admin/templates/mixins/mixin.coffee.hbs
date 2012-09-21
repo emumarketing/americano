@@ -55,11 +55,11 @@ module.exports = {{dataname}}Mixin =
           res.render "{{lowercase resource}}/{{lowercase dataname}}/edit", {item: item, errors: err, action: "/{{lowercase resource}}/{{lowercase dataname}}/update/#{old_slug}"}
         if cb then cb()
 
-  action_blog_search: (req, res, cb) =>
+  action_{{lowercase dataname}}_search: (req, res, cb) =>
     input_search = req.query.search
     page = if req.params.page then req.params.page else 1
     ph = new PageHelper(page)
-    ph.render {{lowercase dataname}}Model, {slug: { $regex : ".*#{input_search}.*", $options: 'i' }}, (err, pagination) ->
+    ph.render {{dataname}}Model, {slug: { $regex : ".*#{input_search}.*", $options: 'i' }}, (err, pagination) ->
       pagination.paged_route(pagination, "search")
       pagination.get_inputs(pagination, {search: input_search})
       res.render "{{lowercase resource}}/{{lowercase dataname}}/search", {errors: err, pagination: pagination}

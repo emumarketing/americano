@@ -28,7 +28,7 @@ module.exports = Generator.extend({
 
     var params = {name: dataname, data: datatypes, dataname: dataname, resource: resource};
 
-    this.template('model.coffee.hbs',  this.project_dir + '/models/' + dataname + 'Model.coffee', { name: dataname + "Model", data: datatypes, dataname: dataname, resource: resource});
+    this.template('model.coffee.hbs',  this.project_dir + '/models/' + dataname + 'Model.coffee', {name: dataname + "Model", data: datatypes, dataname: dataname, resource: resource});
     this.template('./mixins/mixin.coffee.hbs',  this.project_dir + '/controllers/' + resource + '/' + dataname + 'Mixin.coffee', params);
     this.mkdir(this.project_dir + '/views/' + resource + '/' + dataname.toLowerCase());
     this.template('./subviews/_form.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_form.eco', params);
