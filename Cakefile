@@ -9,7 +9,6 @@ task "test", "run tests", ->
     ./node_modules/.bin/mocha 
     --compilers coffee:coffee-script
     --reporter #{REPORTER}
-    --colors
     --require coffee-script 
     --require ./test/test_helper.coffee
   ", (err, output) ->

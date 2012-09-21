@@ -32,6 +32,10 @@ module.exports = Generator.extend({
     this.template('./mixins/mixin.coffee.hbs',  this.project_dir + '/controllers/' + resource + '/' + dataname + 'Mixin.coffee', params);
     this.mkdir(this.project_dir + '/views/' + resource + '/' + dataname.toLowerCase());
     this.template('./subviews/_form.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_form.eco', params);
+    this.template('./subviews/_page.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_page.eco', params);
+    this.template('./subviews/_search.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_search.eco', params);
+    this.template('./subviews/_table.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_table.eco', params);
+    this.template('./subviews/search.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/search.eco', params);
     this.template('./subviews/index.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/index.eco', params);
     this.template('./subviews/create.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/create.eco', params);
     this.template('./subviews/edit.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/edit.eco', params);

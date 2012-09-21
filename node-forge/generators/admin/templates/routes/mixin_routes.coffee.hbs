@@ -1,6 +1,6 @@
 module.exports = (app, controllers) ->
 
-  app.get "/{{lowercase resource}}/{{lowercase dataname}}", (req, res) ->
+  app.get "/{{lowercase resource}}/{{lowercase dataname}}/:page([0-9]+)?", (req, res) ->
     controllers.{{lowercase resource}}.action_{{lowercase dataname}}_index(req, res)
   
   app.get "/{{lowercase resource}}/{{lowercase dataname}}/create", (req, res) ->
@@ -15,3 +15,7 @@ module.exports = (app, controllers) ->
   app.post "/{{lowercase resource}}/{{lowercase dataname}}/update/:slug", (req, res) ->
     controllers.{{lowercase resource}}.action_{{lowercase dataname}}_update(req, res)
   
+    app.get "/{{lowercase resource}}/{{lowercase dataname}}/search/:page([0-9]+)?", (req, res) ->
+    controllers.{{lowercase resource}}.action_{{lowercase dataname}}_search(req, res)
+
+

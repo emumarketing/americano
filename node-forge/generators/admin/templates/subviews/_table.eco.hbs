@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>{{#eachProp data}}
+      <th>{{capitalizeFirst key}}</th>{{/eachProp}}
+      <th>Slug</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+  <% for item in @item: %>  
+  <tr>{{#eachProp data}}
+    <td><%= item.{{key}} %></td>{{/eachProp}}
+    <td><%= item.slug %></td>
+    <td><a href="/{{lowercase resource}}/{{lowercase dataname}}/edit/<%= item.slug %>">Edit</a> | <a href="#">Delete</a></td>
+  </tr>
+  <% end %>
+
+</table>
+
