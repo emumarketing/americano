@@ -4,14 +4,14 @@ module.exports = class {{name}}Controller extends BaseController
   constructor: (@app) ->
     super(@app)
     @io = require('socket.io').listen(@app)
-    @on
+    @on()
 
   on: =>
     @io
-    .of '/{{lowercase name}}'
+    .of('/{{lowercase name}}')
     .on 'connection', (socket) =>
+      console.log "Connection verified..."
       @helloworld(socket)
-
 {{#eachIndex methods}}
       socket.on '{{this}}', () -> 
   
@@ -19,6 +19,7 @@ module.exports = class {{name}}Controller extends BaseController
 
   helloworld: (socket, cb) ->
     socket.emit('message', {hello: 'world'})
+    console.log "helloworld sent"
     if cb then cb()
     
     
