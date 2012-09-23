@@ -3,7 +3,7 @@ module.exports = class PaginationHelper
 
   constructor: (page) ->
     @page = if page then parseInt(page) else 1
-    @limit = 1
+    @limit = 50
 
   render: (model, query, cb) =>
     self = @ 
