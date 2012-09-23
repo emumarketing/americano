@@ -1,0 +1,15 @@
+Db = require('./db')
+{{name}} = new Db.Schema{{#eachProp data}}
+  {{key}}: {{capitalizeFirst value}},{{/eachProp}}
+  slug:
+    type: String,
+    unique: true,
+
+{{#eachProp data}}
+{{../name}}.path('{{key}}').validate (v) ->
+{{/eachProp}}
+
+{{name}}.path('slug').validate (v) ->
+
+
+module.exports = Db.Model.register '{{ name }}', {{ name }}
