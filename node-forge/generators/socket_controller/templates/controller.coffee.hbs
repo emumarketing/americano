@@ -1,0 +1,75 @@
+BaseController = require('./base')
+module.exports = class {{name}}Controller extends BaseController
+
+  constructor: (@app) ->
+    super(@app)
+    @io = require('socket.io').listen(@app)
+    @on
+
+  on: =>
+    @io
+    .of '/{{lowercase name}}'
+    .on 'connection', (socket) =>
+      @helloworld(socket)
+
+{{#eachIndex methods}}
+      socket.on '{{this}}', () -> 
+  
+{{/eachIndex}}
+
+  helloworld: (socket, cb) ->
+    socket.emit('message', {hello: 'world'})
+    if cb then cb()
+    
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

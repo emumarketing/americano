@@ -1,0 +1,6 @@
+module.exports = (app, controllers) ->
+  app.get "/{{lowercase name}}/index", (req, res) ->
+    res.render "{{lowercase name}}/index"
+
+
+
