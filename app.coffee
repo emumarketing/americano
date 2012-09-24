@@ -28,7 +28,7 @@ app.configure ->
 controllers = {}
 
 require("fs").readdirSync(__dirname + "/controllers").forEach (file) ->
-  if fileName = file.match(/(\w+)\.coffee/)
+  if fileName = file.match(/(\w+)\.coffee$/)
 
     className = fileName[1].toLowerCase()
 
@@ -39,7 +39,7 @@ require("fs").readdirSync(__dirname + "/controllers").forEach (file) ->
 # Routes Bootstrapper
 
 require("fs").readdirSync(__dirname + "/routes").forEach (file) ->
-  if fileName = file.match(/[\w|\_]+\.coffee/)
+  if fileName = file.match(/[\w|\_]+\.coffee$/)
     require(__dirname + '/routes/' + fileName[0])(app, controllers)
 
 # Custom Routes

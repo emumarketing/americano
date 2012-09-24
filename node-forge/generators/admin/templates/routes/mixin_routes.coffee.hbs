@@ -14,6 +14,9 @@ module.exports = (app, controllers) ->
   
   app.post "/{{lowercase resource}}/{{lowercase dataname}}/update/:slug", (req, res) ->
     controllers.{{lowercase resource}}.action_{{lowercase dataname}}_update(req, res)
+
+  app.get "/{{lowercase resource}}/{{lowercase dataname}}/delete/:slug", (req, res) ->
+    controllers.{{lowercase resource}}.action_{{lowercase dataname}}_delete(req, res)
   
   app.get "/{{lowercase resource}}/{{lowercase dataname}}/search/:page([0-9]+)?", (req, res) ->
     controllers.{{lowercase resource}}.action_{{lowercase dataname}}_search(req, res)

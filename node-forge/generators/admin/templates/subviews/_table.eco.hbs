@@ -11,7 +11,7 @@
   <tr>{{#eachProp data}}
     <td><%= item.{{key}} %></td>{{/eachProp}}
     <td><%= item.slug %></td>
-    <td><a href="/{{lowercase resource}}/{{lowercase dataname}}/edit/<%= item.slug %>">Edit</a> | <a href="#">Delete</a></td>
+    <td><a href="/{{lowercase resource}}/{{lowercase dataname}}/edit/<%= item.slug %>">Edit</a> | <a href="/{{lowercase resource}}/{{lowercase dataname}}/delete/<%= item.slug %>">Delete</a></td>
   </tr>
   <% end %>
 
