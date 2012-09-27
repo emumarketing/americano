@@ -1,5 +1,10 @@
 module.exports = (app, controllers) ->
-  app.get "/{{lowercase name}}/home",(req, res) ->
+  loadUser = controllers.session.loadUser
+
+  app.get '/{{lowercase name}}/*', (req, res, next) ->
+    loadUser(req, res, next)
+
+  app.get "/{{lowercase name}}/home", (req, res) ->
     controllers.{{lowercase name}}.action_home(req, res)
   
   app.get "/{{lowercase name}}", (req, res) ->

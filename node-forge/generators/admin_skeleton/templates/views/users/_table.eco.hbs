@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+  <% for item in @item: %>  
+  <tr>
+    <td><%= item.username %></td>
+    <td><%= item.email %></td>
+    <td><a href="/{{lowercase name}}/users/edit/<%= item.username %>">Edit</a> | <a href="/{{lowercase name}}/users/delete/<%= item.username %>">Delete</a></td>
+  </tr>
+  <% end %>
+
+</table>
+

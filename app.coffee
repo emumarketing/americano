@@ -13,6 +13,11 @@ app.set "view options",
 
 app.configure ->
   app.use express.bodyParser()
+  app.use express.cookieParser()
+  app.use express.session(
+    secret: 'americano',
+    cookie: {maxAge: 60000 * 20} #20 minutes
+  )
   app.use less(
     src: __dirname + "/public"
     force: true

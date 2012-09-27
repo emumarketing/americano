@@ -1,0 +1,83 @@
+UsersModel = require('../../models/UsersModel')
+PageHelper = require('../../lib/pagination_helper')
+
+module.exports = UsersMixin =
+
+  action_users_index: (req, res, cb) =>
+    page = if req.params.page then req.params.page else 1
+    ph = new PageHelper(page) 
+    ph.render UsersModel, {}, (err, pagination) ->
+      res.render "{{lowercase name}}/users/index", {errors: err, pagination: pagination}
+      if cb then cb()
+      return
+    return
+
+  action_users_create: (req, res, cb) =>
+    res.render "{{lowercase name}}/users/create", {item: {}, action: "/{{lowercase name}}/users/new"}
+    if cb then cb()
+    return
+
+  action_users_new: (req, res, cb) =>
+    params = req.body
+    Users = new UsersModel
+      email: params.email,
+      password: params.password,
+      username: params.username,
+
+    Users.save (err) ->
+      if (err)
+        res.render "{{lowercase name}}/users/create", {item: params, errors: err, action: "/{{lowercase name}}/users/new"}
+      else
+        res.redirect "/{{lowercase name}}/users"
+      if cb then cb()
+    return
+
+  action_users_edit: (req, res, cb) =>
+    username = req.params.username
+    UsersModel.findOne {"username": username}, (err, item) ->
+      if !err and item?
+        res.render "{{lowercase name}}/users/edit", {item: item, errors: err, action: "/{{lowercase name}}/users/update/#{item.username}"}
+      else
+        res.send "Not a Valid Users To Edit"
+      if cb then cb()
+    return
+
+  action_users_update: (req, res, cb) =>
+    username = req.params.username
+    UsersModel.findOne {"username", username}, (err, item) ->
+      item.email = req.body.email
+      item.password = req.body.password
+      old_username = item.username
+      item.username = req.body.username
+      item.save (err) ->
+        if (!err)
+          res.redirect "/{{lowercase name}}/users"
+        else
+          item.username = old_username
+          res.render "{{lowercase name}}/users/edit", {item: item, errors: err, action: "/{{lowercase name}}/users/update/#{old_username}"}
+        if cb then cb()
+
+  action_users_delete: (req, res, cb) =>
+    username = req.params.username
+    UsersModel.remove {"username": username}, (err, item) ->
+      if !err and item?
+        res.redirect "/{{lowercase name}}/users"
+      else
+        res.send "Will not delete due to" + err
+      if cb then cb()
+    return
+
+
+  action_users_search: (req, res, cb) =>
+    input_search = req.query.search
+    page = if req.params.page then req.params.page else 1
+    ph = new PageHelper(page)
+    ph.render UsersModel, {username: { $regex : ".*#{input_search}.*", $options: 'i' }}, (err, pagination) ->
+      pagination.paged_route(pagination, "search")
+      pagination.get_inputs(pagination, {search: input_search})
+      res.render "{{lowercase name}}/users/search", {errors: err, pagination: pagination}
+      if cb then cb()
+      return
+    return
+
+

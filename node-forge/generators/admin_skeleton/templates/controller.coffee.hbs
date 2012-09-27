@@ -4,6 +4,8 @@ BaseController = require('./base')
 
 #BigMixin = require('./{{lowercase name}}/BigMixin')
 
+UsersMixin = require('./{{lowercase name}}/UsersMixin')
+
 module.exports = class {{name}}Controller extends BaseController
 
   constructor: (@app) ->
@@ -11,6 +13,9 @@ module.exports = class {{name}}Controller extends BaseController
 
     # Call the mixin helpers here
     #@mixin(BigMixin)
+
+    # User management mixin
+    @mixin(UsersMixin)
 
   action_home: (req, res) =>
     res.render "{{lowercase name}}/home"

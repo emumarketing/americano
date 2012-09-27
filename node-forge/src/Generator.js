@@ -115,7 +115,6 @@ var Generator = function () {
      *  @param  {Object}    subject the object to use for populating template
      */
     Generator.prototype.template = function (src, dst, subject) {
-
         var obj = _.clone(subject || {}),
             self = this;
 

@@ -1,0 +1,11 @@
+module.exports = (app, controllers) ->
+
+  app.get "/login", (req, res) ->
+    controllers.session.action_index(req, res)
+
+  app.post "/auth", (req, res) ->
+    controllers.session.action_auth(req, res)
+
+  app.get "/logout", (req, res) ->
+    controllers.session.action_logout(req, res)
+

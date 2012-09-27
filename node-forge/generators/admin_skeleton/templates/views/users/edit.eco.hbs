@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="span12"><br><br><br></div>
+</div>
+<div class="row">
+  <div class="span12">
+    <% if @errors: %>    
+      <div class="alert alert-error"><b>Uh Oh!</b>
+        <ul>
+        <% for e in @errors: %>
+          <li><%= e %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h1>Editing <%= @item.Users %></h1><br>
+  </div>
+</div>
+<div class="row">
+  <%- @partial('_form', {item: @item, action: @action}) %>
+</div>
