@@ -2,20 +2,30 @@
 
 **What is Americano?** Americano, a CoffeeScript-based framework, is an extra layer of structure on top of Express JS and Mongoose intended to reduce the busy work in creating an organized project structure. We also built code generators into Americano based on the [node-forge](https://github.com/rjz/node-forge) generator framework. Our generators include Controller, Model, _[Socket.io](http://socket.io/) Controller_, and _AdminPanel_ generators. Our inspiration for Americano came from the PHP Codeigniter framework for its simplicity and from Ruby on Rails for its generators and AdminPanel gems. 
 
-**What's with the name?** American industry with the assembly line in the 19th and 20th centuries propelled the US to become a power in the world. The Americano (CoffeeScript) framework intends to achieve similiar results in aiding Node based web development projects by increasing developer efficiency to focus on application specific logic without the busy work. 
+**What's with the name?** American industry with the assembly line in the early 20th century propelled the US to become a power in the world. The Americano (CoffeeScript) framework intends to achieve similiar results in aiding Node based web development projects by increasing developer efficiency to focus on application specific logic without the busy work.
+
+**Key Features**
+
+* CoffeeScript
+* MVC File Structure
+* Twitter Bootstrapified AdminPanel Generator
+* Controller and Model Generators
+* Socket.io Controller Generator
+* ExpressJS Core
+* Mongoose
 
 **Node Technologies**
 
 * [ExpressJS 2.x](http://expressjs.com/2x/) _To be updated soon_
-* CoffeeScript
+* [CoffeeScript](http://coffeescript.org/)
 * [Mongoose 2.x](http://mongoosejs.com/docs/2.8.x/) _To be updated soon_
-* Eco Templates
-* Mocha, Sinon, Zombie, Chai Testing Libraries
-* Socket.io
-* Node Validator
-* Q Promises
-* Node-Forge Customized for Americano
-	* Added Handlebars for Templating with the [Swag Library](https://github.com/elving/swag)
+* [Eco Templates](https://github.com/sstephenson/eco)
+* [Mocha](http://visionmedia.github.com/mocha/), [Sinon](http://sinonjs.org/), [Zombie](http://zombie.labnotes.org/), [Chai](http://chaijs.com/) Testing Libraries
+* [Socket.io](http://socket.io)
+* [Node Validator](https://github.com/chriso/node-validator)
+* [Q Promises](https://github.com/kriskowal/q)
+* [Node-Forge](https://github.com/rjz/node-forge) Customized for Americano
+	* Added [Handlebars](http://handlebarsjs.com/) for Templating with the [Swag Library](https://github.com/elving/swag)
 	
 ## Project Set Up
 
@@ -68,12 +78,15 @@ You should be able to now use the Generators and work on your project.
 	- app.coffee
 	- am
 	- Cakefile
+	- ./models/db.coffee
 	
 **app.coffee** just as in Express JS it starts the HTTP server process. In Americano it features the code performing the reading of the Controllers directory, and initiating the Controller instances and pushing them to the route files to use. It also bootstraps the routes and initiates them in similiar fashion to the Controllers. 
 
 **am** is the commandline script that calls the node-forge generator. It takes arguments based on which generator you wish to run. 
 
 **Cakefile** is currently used for running the Mocha tests from the test folder. 
+
+**db.coffee** is where your Mongoose configuration is for connecting to your Mongo database. 
 
 ## Generator Tutorial
 
@@ -228,11 +241,11 @@ To run TDD-style testing add your Mocha tests optionally using Sinon and Zombie 
 	
 ## Contributions
 
-We are happy to examine any pull requests container enhancements to Americano and welcome any community feedback. 
+We are happy to examine any pull requests containing enhancements to Americano and welcome any community feedback. 
 	
 ## About The Maintainer
 
-[Michael A Tomcal](https://github.com/mtomcal) of the University of Oregon EMU Marketing team developed Americano in response for the need of an efficient framework for tackling client projects. Americano is currently used in development for a key project and many more are planned. EMU Marketing is a team of student and full time web designers, developers, journalists, and strategists with a love for handcrafted experiences and a passion to be the best that we can be. Please visit our website at [marketing.uoregon.edu](http://marketing.uoregon.edu).
+[Michael A Tomcal](https://github.com/mtomcal) of the University of Oregon EMU Marketing team developed Americano in response to the need of an efficient framework for tackling client projects. Americano is currently used in development for a key project and many more are planned. EMU Marketing is a team of student and full time web designers, developers, journalists, and strategists with a love for handcrafted experiences and a passion to be the best that we can be. Please visit our website at [marketing.uoregon.edu](http://marketing.uoregon.edu).
 
 ## License
 
