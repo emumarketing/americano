@@ -210,7 +210,7 @@ var Generator = function () {
         this.queue(function (result) {
             fs.exists(path, function (exists) {
                 if (exists) {
-                    fs.rmdir(path);
+                    fs.rmdirSync(path);
                     self.success('Removed ' + path);
                     result();
                 } else {
@@ -254,6 +254,7 @@ var Generator = function () {
         }
 
         // replace all create methods with their corresponding "un-"s
+        methods = methods.reverse();
         methods.forEach(function (key) {
             originals[key] = this[key];
             this[key] = this['un' + key];

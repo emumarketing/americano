@@ -1,2 +1,2 @@
 #!/bin/sh
-node ./node-forge/forge.js $*
+node ./core/node-forge/forge.js $*

@@ -1,5 +1,6 @@
 var Generator = require('./../../src/Generator');
 var _ = require("underscore")
+var americano = require('./../americano');
 
 /**
  *	A generator
@@ -8,9 +9,9 @@ module.exports = Generator.extend({
 	
     // set the generator name
 	key: 'model',
-  project_dir: __dirname + '/../../..',
+  project_dir: americano.generatorpath,
 
-    /**
+  /**
 	 *	What to do on setup (will be reversed for teardown)
 	 *	@param	{String}	name	the name of the object being generated
 	 *	@param	{Object}	options	a list of options being passed to the generator

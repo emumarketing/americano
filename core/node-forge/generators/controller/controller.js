@@ -1,4 +1,7 @@
 var Generator = require('./../../src/Generator');
+var americano = require('../americano');
+var path = require("path");
+var fs = require("fs");
 
 /**
  *	A generator
@@ -8,7 +11,7 @@ module.exports = Generator.extend({
   // set the generator name
   key: 'controller',
 
-  project_dir: __dirname + '/../../..',
+  project_dir: americano.generatorpath,
 
   /**
    *	What to do on setup (will be reversed for teardown)

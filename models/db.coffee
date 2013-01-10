@@ -4,12 +4,13 @@ Schema = mongoose.Schema
 env = process.env.NODE_ENV
 
 connection =
-  'default':     'mongodb://localhost/test1',
-  'development': 'mongodb://localhost/test1',
-  'testing':     'mongodb://localhost/test1',
-  'production':  'mongodb://localhost/test1',
+  'default':     'mongodb://127.0.0.1/test1',
+  'development': 'mongodb://127.0.0.1/test1',
+  'testing':     'mongodb://127.0.0.1/test1',
+  'production':  'mongodb://127.0.0.1/test1',
 
 if !env then env = 'default'
+
 mongoose.connect(connection[env])
 
 Validator = require('validator').Validator
