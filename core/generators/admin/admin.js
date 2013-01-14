@@ -1,5 +1,5 @@
-var Generator = require('./../../src/Generator')
-, _ = require("underscore");
+var Generator = require('./../../node-forge/src/Generator');
+var _ = require("underscore");
 var americano = require('./../americano');
 
 

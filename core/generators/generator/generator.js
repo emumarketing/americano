@@ -1,4 +1,4 @@
-var Generator = require('./../../src/Generator');
+var Generator = require('./../../node-forge/src/Generator');
 
 /**
  *	A generator for creating other generators

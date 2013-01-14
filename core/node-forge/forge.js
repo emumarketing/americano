@@ -32,9 +32,10 @@ var generators = require('./generators/all');
 	if (_.include(['create','destroy'], generatorAction)) {
 		if (_.has(generators, generatorName)) {
       generator = generators[generatorName]
+      generator.verbose = true;
       generator[generatorAction](objectName, objectOptions);
       if (generatorAction == 'destroy') {
-        generator.q = generator.q.reverse();
+        generator.reverseQueue();
       }
       generator.run();
 		} else {

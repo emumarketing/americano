@@ -1,18 +1,24 @@
 var _ = require('underscore')
   , async = require('async')
   , fs = require('fs')
-  , Handlebars = require('handlebars')
-  , Swag = require('swag')
+  , handlebars = require('handlebars')
+  , swag = require('swag')
 ;
 
 /**
  *  Generator base class
  */
-
 var Generator = function () {
 
     // keep a list of child classes available
     var _children = {};
+
+    // log messages if generator.verbose == true
+    var _log = function (generator, message) {
+        if (generator.verbose && console) {
+            console.log(message);
+        }
+    };
 
     // wear a nametag when performing logging
     var _prefix = function (g) {
@@ -43,7 +49,7 @@ var Generator = function () {
      *  @param  {String}    message the notice to print
      */
     Generator.prototype.notice = function (message) {
-        console.log(_prefix(this) + (message || '[no message]'));
+        _log(this, _prefix(this) + (message || '[no message]'));
     };
 
     /**
@@ -51,7 +57,7 @@ var Generator = function () {
      *  @param  {String}    message the error to print
      */
     Generator.prototype.error = function (message) {
-        console.log('! ' + _prefix(this) + (message || '[no message]'));
+        _log(this, '! ' + _prefix(this) + (message || '[no message]'));
         process.exit();
     };
 
@@ -60,7 +66,7 @@ var Generator = function () {
      *  @param  {String}    message the message to print
      */
     Generator.prototype.success = function (message) {
-        console.log(_prefix(this) + (message || '[no message]'));
+        _log(this, _prefix(this) + (message || '[no message]'));
     };
 
     /**
@@ -95,7 +101,8 @@ var Generator = function () {
      *  @return {String}
      */
     Generator.prototype.generatorDir = function () {
-        var dir = __dirname.split('/');
+        var dir = __dirname + "/../../";
+        dir = dir.split('/');
         dir[dir.length - 1] = 'generators/' + this.key;
         return dir.join('/');
     };
@@ -115,6 +122,7 @@ var Generator = function () {
      *  @param  {Object}    subject the object to use for populating template
      */
     Generator.prototype.template = function (src, dst, subject) {
+
         var obj = _.clone(subject || {}),
             self = this;
 
@@ -127,24 +135,25 @@ var Generator = function () {
             fs.readFile(self.templateDir() + '/' + src, function (err, content) {
 
                 if (err) {
+                    self.error(err);
                     return result('Failed reading template at ' + src);
                 }
 
                 content = content.toString();
 
                 if (content != '') {
-                    var template = Handlebars.compile(content);
+                    var template = handlebars.compile(content);
                     content = template(obj);
                 }
 
-                fs.exists(dst, function (exists) {
-                    if (exists) {
+                fs.writeFile(dst, content, undefined, function (err) {
+                    if (err) {
+                        self.error(err);
                         return result('Destination file ' + dst + ' exists. Please resolve conflict.');
+                    } else {
+                        self.success('Created ' + dst)
+                        return result(null);
                     }
-
-                    fs.writeFile(dst, content);
-                    self.success('Created ' + dst)
-                    result(null);
                 });
                 
             });
@@ -162,12 +171,12 @@ var Generator = function () {
         var self = this;
 
         this.queue(function (result) {
-            fs.exists(dst, function (exists) {
-                if (exists) {
-                    fs.unlink(dst);
+            fs.unlink(dst, function (err) {
+                if (!err) {
                     self.success('Removed ' + dst)
                     result();
                 } else {
+                    self.error(err);
                     result('Failed deleting ' + dst);
                 }
             });
@@ -184,14 +193,13 @@ var Generator = function () {
         
         this.queue(function (result) {
 
-            fs.exists(path, function (exists) {
-                if (exists) {
-                    result(path + ' exists. Please resolve this manually.');
-                } else {
-                    // FIXME: handle errors
-                    fs.mkdir(path);
+            fs.mkdir(path, undefined, function (err) {
+                if (!err) {
                     self.success('Created directory ' + path)
                     result();
+                } else {
+                    self.error(err);
+                    result(path + ' exists. Please resolve this manually.');
                 }
             });
         });
@@ -208,12 +216,12 @@ var Generator = function () {
         var self = this;
         
         this.queue(function (result) {
-            fs.exists(path, function (exists) {
-                if (exists) {
-                    fs.rmdirSync(path);
+            fs.rmdir(path, function (err) {
+                if (!err) {
                     self.success('Removed ' + path);
                     result();
                 } else {
+                    self.error(err);
                     result('Failed removing ' + path);
                 }
             });
@@ -254,7 +262,6 @@ var Generator = function () {
         }
 
         // replace all create methods with their corresponding "un-"s
-        methods = methods.reverse();
         methods.forEach(function (key) {
             originals[key] = this[key];
             this[key] = this['un' + key];
@@ -267,6 +274,16 @@ var Generator = function () {
         for (key in originals) {
             this[key] = originals[key];
         }
+    };
+
+    /**
+     * Reverse the Queue ordering. 
+     * This will allow the destroy generator action to remove files first and 
+     * then empty directories
+     */
+
+    Generator.prototype.reverseQueue = function () {
+        this.q = this.q.reverse();
     };
 
     /**
@@ -302,3 +319,4 @@ var Generator = function () {
 }();
 
 module.exports = Generator;
+

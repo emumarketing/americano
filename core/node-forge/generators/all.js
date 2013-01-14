@@ -2,11 +2,10 @@
 var fs = require('fs');
 
 var generators = {},
-	dir = __dirname + '/',
+	dir = __dirname + '/../../generators/',
 	me = __filename.substr(dir.length);
-
 // check this directory for all javascript files that aren't this one.
-files = fs.readdirSync(__dirname);
+files = fs.readdirSync(dir);
 files.forEach(function (generator) {
 	var path = dir + generator + "/" + generator + ".js";
 

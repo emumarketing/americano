@@ -1,7 +1,5 @@
-var Generator = require('./../../src/Generator');
-var americano = require('../americano');
-var path = require("path");
-var fs = require("fs");
+var Generator = require('./../../node-forge/src/Generator');
+var americano = require('./../americano');
 
 /**
  *	A generator
@@ -9,7 +7,7 @@ var fs = require("fs");
 module.exports = Generator.extend({
 
   // set the generator name
-  key: 'controller',
+  key: 'socket_controller',
 
   project_dir: americano.generatorpath,
 
@@ -31,9 +29,7 @@ module.exports = Generator.extend({
     this.template('routes.coffee.hbs', this.project_dir + '/routes/' + name.toLowerCase() + '.coffee', params);  
     this.mkdir(this.project_dir + '/views/' + name.toLowerCase());
     this.template('layout.eco.hbs', this.project_dir + '/views/' + name.toLowerCase() + '/layout.eco', params);  
-
-    for (i in options) {
-      this.template('view.eco.hbs', this.project_dir + '/views/' + name.toLowerCase() + '/' + options[i].toLowerCase() + '.eco', {name: name, method: options[i]});
-    }
+    this.template('client.js.hbs', this.project_dir + '/public/javascripts/' + name.toLowerCase() + '.js', params);  
+    this.template('view.eco.hbs', this.project_dir + '/views/' + name.toLowerCase() + '/index.eco', {name: name, method: options});
   }
 });
