@@ -1,0 +1,61 @@
+BaseController = require('./base')
+
+module.exports = class <%= name %>Controller extends BaseController
+
+  constructor: (@app) ->
+    super(@app)
+
+<% _.each(methods, function(method) { %>
+  action_<%= method %>: (req, res) =>
+    res.render "<%= name.toLowerCase() %>/<%= method %>"
+    return
+<% }); %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

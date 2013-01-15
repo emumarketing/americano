@@ -30,19 +30,19 @@ module.exports = Generator.extend({
 
     var params = {name: dataname, data: datatypes, dataname: dataname, resource: resource};
 
-    this.template('model.coffee.hbs',  this.project_dir + '/models/' + dataname + 'Model.coffee', {name: dataname + "Model", data: datatypes, dataname: dataname, resource: resource});
-    this.template('./mixins/mixin.coffee.hbs',  this.project_dir + '/controllers/' + resource + '/' + dataname + 'Mixin.coffee', params);
+    this.template('model.coffee.tmpl',  this.project_dir + '/models/' + dataname + 'Model.coffee', {name: dataname + "Model", data: datatypes, dataname: dataname, resource: resource});
+    this.template('./mixins/mixin.coffee.tmpl',  this.project_dir + '/controllers/' + resource + '/' + dataname + 'Mixin.coffee', params);
     this.mkdir(this.project_dir + '/views/' + resource + '/' + dataname.toLowerCase());
-    this.template('./subviews/_form.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_form.eco', params);
-    this.template('./subviews/_page.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_page.eco', params);
-    this.template('./subviews/_search.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_search.eco', params);
-    this.template('./subviews/_table.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/_table.eco', params);
-    this.template('./subviews/search.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/search.eco', params);
-    this.template('./subviews/index.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/index.eco', params);
-    this.template('./subviews/create.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/create.eco', params);
-    this.template('./subviews/edit.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/edit.eco', params);
-    this.template('./subviews/layout.eco.hbs',  this.project_dir + '/views/' + resource + '/' + dataname + '/layout.eco', params);
-    this.template('./routes/mixin_routes.coffee.hbs',  this.project_dir + '/routes/' + resource.toLowerCase() + '_' + dataname.toLowerCase() + '.coffee', params);
+    this.template('./subviews/_form.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/_form.eco', params);
+    this.template('./subviews/_page.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/_page.eco', params);
+    this.template('./subviews/_search.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/_search.eco', params);
+    this.template('./subviews/_table.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/_table.eco', params);
+    this.template('./subviews/search.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/search.eco', params);
+    this.template('./subviews/index.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/index.eco', params);
+    this.template('./subviews/create.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/create.eco', params);
+    this.template('./subviews/edit.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/edit.eco', params);
+    this.template('./subviews/layout.eco.tmpl',  this.project_dir + '/views/' + resource + '/' + dataname + '/layout.eco', params);
+    this.template('./routes/mixin_routes.coffee.tmpl',  this.project_dir + '/routes/' + resource.toLowerCase() + '_' + dataname.toLowerCase() + '.coffee', params);
 
 
   },

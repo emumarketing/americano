@@ -2,10 +2,16 @@
 # Uses: americano.secret, americano.cookies, americano.path
 
 module.exports = (americano) =>
+  swig = require "swig"
   express = require "express"
   less = require "less-middleware"
   cons = require "consolidate"
   app = express()
+
+  swig.init({
+    root: americano.path + "views", #Note this directory is your Views directory
+    allowErrors: true #allows errors to be thrown and caught by express
+  })
 
   app.set "views", americano.path + "/views"
   app.engine '.swig', cons.swig

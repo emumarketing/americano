@@ -1,8 +1,6 @@
 var _ = require('underscore')
   , async = require('async')
   , fs = require('fs')
-  , handlebars = require('handlebars')
-  , swag = require('swag')
 ;
 
 /**
@@ -142,8 +140,7 @@ var Generator = function () {
                 content = content.toString();
 
                 if (content != '') {
-                    var template = handlebars.compile(content);
-                    content = template(obj);
+                    content = _.template(content, obj);
                 }
 
                 fs.writeFile(dst, content, undefined, function (err) {
@@ -319,4 +316,3 @@ var Generator = function () {
 }();
 
 module.exports = Generator;
-

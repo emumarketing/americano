@@ -1,8 +1,0 @@
-module.exports = (app, controllers) ->
-{{#eachIndex methods}}
-  app.get "/{{lowercase ../name}}/{{this}}", (req, res) ->
-    controllers.{{lowercase ../name}}.action_{{this}}(req, res)
-{{/eachIndex}}
-
-
-
