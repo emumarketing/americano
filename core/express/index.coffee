@@ -4,11 +4,12 @@
 module.exports = (americano) =>
   express = require "express"
   less = require "less-middleware"
-  eco = require "eco"
-  app = express.createServer()
+  cons = require "consolidate"
+  app = express()
 
   app.set "views", americano.path + "/views"
-  app.set 'view engine', 'eco'
+  app.engine '.swig', cons.swig
+  app.set 'view engine', 'swig'
   app.set "view options",
     layout: true
     pretty: true
