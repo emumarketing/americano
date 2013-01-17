@@ -7,8 +7,7 @@ module.exports = () ->
   americano.path = path.join(path.dirname(fs.realpathSync(__filename)), '../../')
   americano.corepath = path.join(path.dirname(fs.realpathSync(__filename)), '../')
 
-  americano.cookies = {maxAge: 60000 * 20}
-  americano.secret = 'americano'
+  americano.config = require(americano.path + "/config/app.json")
 
   americano.controllers = {}
 
@@ -27,6 +26,8 @@ module.exports = () ->
         route_file = require(americano.path + '/routes/' + file_name[0])
         if route_file instanceof Function
           route_file(americano.express, americano.controllers)
+
+  americano.load_models = () =>
 
   americano.load_express = () =>
     express = require(americano.corepath + '/express')

@@ -1,0 +1,6 @@
+module.exports = (app, controllers) ->
+  app.get "/<%= name.toLowerCase() %>/index", (req, res) ->
+    res.render "<%= name.toLowerCase() %>/index"
+
+
+

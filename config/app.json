@@ -1,0 +1,13 @@
+{
+  "port": 8004,
+  "cookies": {
+    "maxAge": 1200000
+  },
+  "secret": "americano",
+  "database": {
+    "development": "mongodb://127.0.0.1/test1",
+    "testing": "mongodb://127.0.0.1/test1",
+    "production": "mongodb://127.0.0.1/test1"
+  },
+  "environment": "development"
+}

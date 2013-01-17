@@ -23,7 +23,7 @@ module.exports = Generator.extend({
       datatypes[ary[0]] = ary[1];
     }); 
 
-    this.template('model.coffee.hbs',  this.project_dir + '/models/' + name + 'Model.coffee', {name: name + "Model", data: datatypes});
+    this.template('model.coffee.tmpl',  this.project_dir + '/models/' + name + 'Model.coffee', {name: name + "Model", data: datatypes});
 
 
   }

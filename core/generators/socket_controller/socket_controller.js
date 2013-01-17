@@ -25,11 +25,11 @@ module.exports = Generator.extend({
     options = options.map(makeLowerCase)
 
     var params = {name: name, methods: options};
-    this.template('controller.coffee.hbs', this.project_dir + '/controllers/' + name + '.coffee', params);  
-    this.template('routes.coffee.hbs', this.project_dir + '/routes/' + name.toLowerCase() + '.coffee', params);  
+    this.template('controller.coffee.tmpl', this.project_dir + '/controllers/' + name + '.coffee', params);  
+    this.template('routes.coffee.tmpl', this.project_dir + '/routes/' + name.toLowerCase() + '.coffee', params);  
     this.mkdir(this.project_dir + '/views/' + name.toLowerCase());
-    this.template('layout.eco.hbs', this.project_dir + '/views/' + name.toLowerCase() + '/layout.eco', params);  
-    this.template('client.js.hbs', this.project_dir + '/public/javascripts/' + name.toLowerCase() + '.js', params);  
-    this.template('view.eco.hbs', this.project_dir + '/views/' + name.toLowerCase() + '/index.eco', {name: name, method: options});
+    this.template('layout.swig.tmpl', this.project_dir + '/views/' + name.toLowerCase() + '/layout.swig', params);  
+    this.template('client.js.tmpl', this.project_dir + '/public/javascripts/' + name.toLowerCase() + '.js', params);  
+    this.template('view.swig.tmpl', this.project_dir + '/views/' + name.toLowerCase() + '/index.swig', {name: name, method: options});
   }
 });

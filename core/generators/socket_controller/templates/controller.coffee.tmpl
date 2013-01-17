@@ -1,5 +1,5 @@
 BaseController = require('./base')
-module.exports = class {{name}}Controller extends BaseController
+module.exports = class <%= name %>Controller extends BaseController
 
   constructor: (@app) ->
     super(@app)
@@ -8,14 +8,13 @@ module.exports = class {{name}}Controller extends BaseController
 
   on: =>
     @io
-    .of('/{{lowercase name}}')
+    .of('/<%= name.toLowerCase() %>')
     .on 'connection', (socket) =>
       console.log "Connection verified..."
       @helloworld(socket)
-{{#eachIndex methods}}
-      socket.on '{{this}}', () -> 
-  
-{{/eachIndex}}
+<% _.each(methods, function (value) { %>
+      socket.on '<%= value %>', () -> 
+<% }); %>
 
   helloworld: (socket, cb) ->
     socket.emit('message', {hello: 'world'})

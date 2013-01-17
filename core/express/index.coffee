@@ -24,8 +24,8 @@ module.exports = (americano) =>
       app.use express.bodyParser()
       app.use express.cookieParser()
       app.use express.session(
-        secret: americano.secret,
-        cookie: americano.cookies, #{maxAge: 60000 * 20} #20 minutes
+        secret: americano.config.secret,
+        cookie: americano.config.cookies, #{maxAge: 60000 * 20} #20 minutes
       )
       app.use less(
         src: americano.path + "/public"
