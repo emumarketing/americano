@@ -20,20 +20,20 @@ module.exports = (americano) =>
     layout: true
     pretty: true
 
-    app.configure ->
-      app.use express.bodyParser()
-      app.use express.cookieParser()
-      app.use express.session(
-        secret: americano.config.secret,
-        cookie: americano.config.cookies, #{maxAge: 60000 * 20} #20 minutes
-      )
-      app.use less(
-        src: americano.path + "/public"
-        force: true
-        compress: "auto"
-        optimization: 2
-      )
-      app.use express.static(americano.path + "/public")
-      app.use app.router
+  app.configure ->
+    app.use express.bodyParser()
+    app.use express.cookieParser()
+    app.use express.session(
+      secret: americano.config.secret,
+      cookie: americano.config.cookies, #{maxAge: 60000 * 20} #20 minutes
+    )
+    app.use less(
+      src: americano.path + "/public"
+      force: true
+      compress: "auto"
+      optimization: 2
+    )
+    app.use express.static(americano.path + "/public")
+    app.use app.router
 
-      return app
+  return app
