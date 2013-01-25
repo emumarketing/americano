@@ -1,14 +1,14 @@
-Db = require('./db')
-<%= name %> = new Db.Schema<% _.each(data, function (key, value) { %>
-  <%= value %>: <%= key %>,<% }); %>
-  slug:
-    type: String,
-    unique: true,
+module.exports = (americano) =>
+  <%= name %> = new americano.model.schema<% _.each(data, function (key, value) { %>
+    <%= value %>: <%= key %>,<% }); %>
+    slug:
+      type: String,
+      unique: true,
 
-<% _.each(data, function (key, value) { %>
-<%= name %>.path('<%= value %>').validate (v) ->
-<% }); %>
+  <% _.each(data, function (key, value) { %>
+  <%= name %>.path('<%= value %>').validate (v) ->
+  <% }); %>
 
-<%= name %>.path('slug').validate (v) ->
+  <%= name %>.path('slug').validate (v) ->
+  return <%= name %>
 
-module.exports = Db.Model.register '<%= name %>', <%= name %>
