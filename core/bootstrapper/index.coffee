@@ -22,7 +22,7 @@ module.exports = () ->
       if file_name = file.match(/(\w+)\.coffee$/)
         className = file_name[1].toLowerCase()
         klass = require(americano.path + "/controllers/" + file)
-        americano.controllers[className] = new klass(americano.express)
+        americano.controllers[className] = new klass(americano)
 
   # Routes Bootstrapper
   americano.load_routes = () =>
@@ -30,7 +30,7 @@ module.exports = () ->
       if file_name = file.match(/[\w|\_]+\.coffee$/)
         route_file = require(americano.path + '/routes/' + file_name[0])
         if route_file instanceof Function
-          route_file(americano.express, americano.controllers)
+          route_file(americano)
 
   #Model Bootstrapper
   americano.load_models = () =>
