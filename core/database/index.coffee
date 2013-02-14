@@ -28,6 +28,4 @@ module.exports = (americano) =>
       return Mongoose.model(name)
 
   return americano
-
-
   

@@ -3,6 +3,3 @@ module.exports = (app, controllers) ->
   app.get "/<%= name.toLowerCase() %>/<%= method %>", (req, res) ->
     controllers.<%= name.toLowerCase() %>.action_<%= method %>(req, res)
 <% }); %>
-
-
-

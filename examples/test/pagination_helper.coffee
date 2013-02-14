@@ -220,13 +220,3 @@ describe 'PaginationHelper', ->
         ph.page = 4
         prev_page = ph.prev_page()
         assert.strictEqual(prev_page, 3)
-
-
-
-
-
-
-
-
-
-

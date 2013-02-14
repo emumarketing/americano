@@ -105,5 +105,3 @@ module.exports = class PaginationHelper
         context._get_inputs = url_string
       else
         context._get_inputs = ""
-
-
