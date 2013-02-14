@@ -74,8 +74,6 @@ To run the Americano server:
 
 ## Generator Tutorial
 
-**Note:** The destroy does not delete folders recursively if there are files in them and requires manual intervention sometimes to clean up after a destroy operation on a generator. This is due to the NodeJS recursive delete issue. See [node-forge](https://github.com/rjz/node-forge) project for more details.
-
 ###Basic Syntax
 
 	./am [create|destroy] [generator_name] [object_name] [methods or fields]
