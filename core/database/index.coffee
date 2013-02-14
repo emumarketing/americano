@@ -2,14 +2,11 @@
 #a database connection based on values in the config.
 
 Mongoose = require('mongoose')
-Validator = require('validator')
+Validator = require('mongoose-validator').validate
 
 module.exports = (americano) =>
 
-  americano.validator = new Validator.Validator
-
-  americano.validator.error = (msg) ->
-    return false
+  americano.validator = Validator
 
   americano.model = {}
 
@@ -28,4 +25,6 @@ module.exports = (americano) =>
       return Mongoose.model(name)
 
   return americano
+
+
   

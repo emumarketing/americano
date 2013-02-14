@@ -1,13 +1,11 @@
 module.exports = (americano) =>
+
+  validate = americano.validator
+
   <%= name %> = new americano.model.schema<% _.each(data, function (key, value) { %>
     <%= value %>: <%= key %>,<% }); %>
     slug:
       type: String,
       unique: true,
 
-  <% _.each(data, function (key, value) { %>
-  <%= name %>.path('<%= value %>').validate (v) ->
-  <% }); %>
-
-  <%= name %>.path('slug').validate (v) ->
   return <%= name %>

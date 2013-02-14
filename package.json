@@ -18,7 +18,9 @@
     "crypto": ">=0.0.3",
     "consolidate": "~0.7.0",
     "express-partials": "0.0.6",
-    "swig": "~0.13.4"
+    "swig": "~0.13.4",
+    "forms-bootstrap": "0.0.5",
+    "mongoose-validator": "~0.2.1"
   },
   "main": "app",
   "engines": {

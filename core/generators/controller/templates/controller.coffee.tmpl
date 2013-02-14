@@ -2,8 +2,8 @@ BaseController = require('./base')
 
 module.exports = class <%= name %>Controller extends BaseController
 
-  constructor: (@app) ->
-    super(@app)
+  constructor: (@am) ->
+    super(@am)
 
 <% _.each(methods, function(method) { %>
   action_<%= method %>: (req, res) =>
