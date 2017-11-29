@@ -20,7 +20,7 @@
 * [CoffeeScript](http://coffeescript.org/)
 * [Mongoose 3.x](http://mongoosejs.com/docs)
 * [Swig Templates](http://paularmstrong.github.com/swig/)
-* [Mocha](http://visionmedia.github.com/mocha/), [Sinon](http://sinonjs.org/), [Zombie](http://zombie.labnotes.org/), [Chai](http://chaijs.com/) Testing Libraries
+* [Mocha](http://mochajs.org/), [Sinon](http://sinonjs.org/), [Zombie](http://zombie.labnotes.org/), [Chai](http://chaijs.com/) Testing Libraries
 * [Socket.io](http://socket.io)
 * [Node Validator](https://github.com/chriso/node-validator)
 * [Node-Forge](https://github.com/rjz/node-forge) Customized for Americano
